@@ -3,6 +3,7 @@ import dbConnection as conn
 import face_recognition
 import numpy
 
+
 # Retrieve the encoded image
 def retrieveImage(user_id):
     mycursor = conn.mydb.cursor()
@@ -14,14 +15,14 @@ def retrieveImage(user_id):
 
 
 # get the encoded image of a particular individual
-thompson_encoded_db = retrieveImage(10)
+thompson_encoded_db = retrieveImage(17)
 
 # convert the learnt image from the db to numpy array
 thompson_encoded = numpy.loads(thompson_encoded_db)
 
 # compare images
 unknown_image = ""
-thompson_images = ['thom1.png', 'thom3.jpg', 'thom4.jpeg']
+thompson_images = ['thom1.png', 'thom3.jpg', 'thom4.jpeg', 'thor1.jpeg', 'ariana.jpeg', 'thor2.jpg']
 
 for x in thompson_images:
     # load the unknown image
@@ -32,4 +33,6 @@ for x in thompson_images:
 
     # compare unkown image with the learnt model
     comparison_results = face_recognition.compare_faces([thompson_encoded],unknown_image_encoding)
-    print("Results ", comparison_results)
+
+    # the results is a list data type
+    print("Results ", comparison_results[0])

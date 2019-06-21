@@ -41,6 +41,7 @@ print(np.array_equal(thompson_encoding, np.loads(thompson_encoding_db)))
 """
 Since its an numpy array convert to string to save to database --- x = thompson_encoding.tostring() 
 When fetched convert back to array --- np.fromstring(x, dtype=float) or np.loads(x)
+NOTE TO SELF --- np.loads works 100%
 """
 
 # save thompson
@@ -52,7 +53,7 @@ print("Last record id", mycursor.lastrowid)
 
 # save thor
 sql = """INSERT INTO `users` (`name`, `image_name`, `encoded_image`) VALUES (%s, %s, %s)"""
-val = ('Thor', 'thor.jpeg', thor_encoding.tostring())
+val = ('Thor', 'thor.jpeg', thor_encoding.dumps())
 mycursor.execute(sql, val)
 conn.mydb.commit()
 print("Thor record id", mycursor.lastrowid)
