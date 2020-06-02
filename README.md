@@ -5,3 +5,4 @@ store the faceprint in a database(mysql) and retrieve it in future to compare wi
 The test was successful.
 
 This is a sample system that can help individuals looking into facial recognition technology to get started.
+Have a nice coding experience :-)
